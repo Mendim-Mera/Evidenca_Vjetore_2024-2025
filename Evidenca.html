@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidenca e Tremujorit të Dytë</title>
+    <style>
+        body {
+            font-family: Times New Roman;
+            margin: 0px;
+            background-color: lightblue;
+            color: #333;
+        }
+        h3 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        form {
+            background-color: moccasin;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+	    font-family: Times New Roman;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+	    
+	    font-family: Times New Roman;
+        }
+        input, select, button {
+            width: calc(100% - 0px);
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .row {
+            display: flex;
+            gap: 2px;
+            align-items: center;
+	    width: calc(97% - 0px);
+	    
+        }
+        .row > div {
+            flex: 1;
+	    
+        }
+        .row input {
+            margin-top: 0;
+	    
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+	    font-family: Times New Roman;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .signature-pad {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        canvas {
+            width: 100%;
+            height: 150px;
+            border-radius: 4px;
+            touch-action: none; /* Ndalo zoom-in në telefon */
+	    background-color: lightyellow;
+        }
+	
+
+	table {
+            width: 100%;
+            margin-top: 2px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        td input[type="text"] {
+            width: calc(100% - 0px); /* Llogarit gjerësinë duke marrë parasysh padding */
+            margin: 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Siguron që padding dhe border të përfshihen në gjerësinë totale */
+        }
+        .delete-button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+	.error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <h3>EVIDENCA E TREMUJORIT TË DYTË</h3>
+
+    <form id="evidencaForm">
+       
+
+        <!-- Klasa -->
+        <label for="klasa">Klasa:</label>
+        <select id="klasa" name="klasa" required>
+             <option value="" disabled selected>Zgjidh klasën nga lista</option>
+    <option value="10-A">10-A</option>
+    <option value="10-B">10-B</option>
+    <option value="10-C">10-C</option>
+    <option value="10-D">10-D</option>
+    <option value="10-E">10-E</option>
+    <option value="10-F">10-F</option>
+    <option value="10-G">10-G</option>
+    <option value="10-H">10-H</option>
+    <option value="10-I">10-I</option>
+    <option value="11-A">11-A</option>
+    <option value="11-B">11-B</option>
+    <option value="11-C">11-C</option>
+    <option value="11-D">11-D</option>
+    <option value="11-E">11-E</option>
+    <option value="11-F">11-F</option>
+    <option value="11-G">11-G</option>
+    <option value="11-H">11-H</option>
+    <option value="12-A">12-A</option>
+    <option value="12-B">12-B</option>
+    <option value="12-C">12-C</option>
+    <option value="12-D">12-D</option>
+    <option value="12-E">12-E</option>
+    <option value="12-F">12-F</option>
+    <option value="12-G">12-G</option>
+    
+  </select><br><br>
+
+        <!-- Nxënës në Fillim -->
+        <label>Nxënës në Fillim:</label>
+        <div class="row">
+            <div>
+                <input type="number" id="gjithsejFillim" name="gjithsejFillim" placeholder="Gjithsej" required>
+            </div>
+            <div>
+                <input type="number" id="vajzaFillim" name="vajzaFillim" placeholder="Vajza" required>
+            </div>
+        </div><br><br>
+
+        <!-- Nxënës në Fund -->
+        <label>Nxënës në Fund:</label>
+        <div class="row">
+            <div>
+                <input type="number" id="gjithsejFund" name="gjithsejFund" placeholder="Gjithsej" required>
+            </div>
+            <div>
+                <input type="number" id="vajzaFund" name="vajzaFund" placeholder="Vajza" required>
+            </div>
+        </div><br><br>
+
+        <!-- Nxënës Mbetës -->
+        <label>Nxënës Mbetës:</label>
+        <div class="row">
+            <div>
+                <input type="number" id="gjithsejMbetes" name="gjithsejMbetes" placeholder="Gjithsej" required>
+            </div>
+            <div>
+                <input type="number" id="vajzaMbetes" name="vajzaMbetes" placeholder="Vajza" required>
+            </div>
+        </div><br><br>
+
+        <!-- Mungesa -->
+        <label>Mungesa:</label>
+        <div class="row">
+            <div>
+                <input type="number" id="gjithsejMungesa" name="gjithsejMungesa" placeholder="Gjithsej" required>
+            </div>
+            <div>
+                <input type="number" id="paArsyeMungesa" name="paArsyeMungesa" placeholder="Pa Arsye" required>
+            </div>
+        </div><br><br>
+
+        <!-- Tabela për Nxënës Mbetës -->
+        <label for="mbetesTable">Nxënës Mbetës dhe Lëndët Mbetëse:</label>
+        <table id="mbetesTable">
+            <thead>
+                <tr>
+                    <th>Emri i Nxënësit</th>
+                    <th>Lëndët Mbetëse</th>
+                    <th>-</th> <!-- Kolonë e re për butonin "Fshij" -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="emriNxenes[]" placeholder="Emri Mbiemri" required></td>
+                    <td><input type="text" name="lendetMbetese[]" placeholder="Lënda1, Lënda2,... " required></td>
+                    <td style="width: calc(5% - 0px)" ><button type="button" class="delete-button" onclick="deleteRow(this)">Hiq</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addRow()">Shto Rresht</button><br><br><br><br>
+	<!-- Emri dhe Mbiemri -->
+	<label for="emri">Emri i Mësuesit Kujdestar:</label>
+        <div class="row">
+            <div>
+                
+                <input type="text" id="emri" name="emri" placeholder="Emri" required>
+            </div>
+            <div>
+                
+                <input type="text" id="mbiemri" name="mbiemri" placeholder="Mbiemri" required>
+            </div>
+        </div><br><br>
+
+
+        <!-- Firma -->
+        <label for="firma">Firma e Mësuesit Kujdestar:</label>
+        <div class="signature-pad">
+            <canvas id="signatureCanvas"></canvas>
+
+        </div>
+        <button type="button" onclick="clearSignature()">Fshij firmën</button>
+        <input type="hidden" id="firma" name="firma" ><br><br><br><br>
+
+        <!-- Butoni për Dërgim -->
+        <button type="submit"  style="background-color: blue;">Dërgo</button>
+    </form>
+
+    <script>
+        // Funksioni për të shtuar rreshta në tabelë (i njëjtë si më parë)
+        function addRow() {
+            const table = document.getElementById('mbetesTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+
+            cell1.innerHTML = '<input type="text" name="emriNxenes[]" placeholder="Emri Mbiemri" required>';
+            cell2.innerHTML = '<input type="text" name="lendetMbetese[]" placeholder="Lënda1, Lënda2,... " required>';
+            cell3.innerHTML = '<button type="button" class="delete-button" onclick="deleteRow(this)">Hiq</button>';
+        }
+
+        // Funksioni për të fshirë rreshtin (i njëjtë si më parë)
+        function deleteRow(button) {
+            const row = button.closest('tr'); // Gjej rreshtin që përmban butonin
+            row.remove(); // Fshij rreshtin
+        }
+
+        // Funksioni për të pastruar firmën (i njëjtë si më parë)
+        function clearSignature() {
+            const canvas = document.getElementById('signatureCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('firma').value = '';
+        }
+
+        // Funksioni për të kapur firmën si Base64 (i njëjtë si më parë)
+        function captureSignature() {
+            const canvas = document.getElementById('signatureCanvas');
+            const dataURL = canvas.toDataURL(); // Konverto në Base64
+            document.getElementById('firma').value = dataURL;
+        }
+
+        // Inicializo Signature Pad (i njëjtë si më parë)
+        const canvas = document.getElementById('signatureCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+	
+
+        // Funksioni për të marrë koordinatat e sakta (i njëjtë si më parë)
+        function getCanvasCoordinates(event) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+
+            let x, y;
+
+            if (event.touches) {
+                // Për ekranin e prekshëm
+                x = (event.touches[0].clientX - rect.left) * scaleX;
+                y = (event.touches[0].clientY - rect.top) * scaleY;
+            } else {
+                // Për miun
+                x = (event.clientX - rect.left) * scaleX;
+                y = (event.clientY - rect.top) * scaleY;
+            }
+
+            return { x, y };
+        }
+
+        // Funksioni për të filluar vizatimin (i njëjtë si më parë)
+        function startDrawing(event) {
+            event.preventDefault(); // Parandaloni sjelljen e parazgjedhur (p.sh., scroll)
+            isDrawing = true;
+            const { x, y } = getCanvasCoordinates(event);
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        // Funksioni për të vazhduar vizatimin (i njëjtë si më parë)
+        function draw(event) {
+            event.preventDefault(); // Parandaloni sjelljen e parazgjedhur
+            if (isDrawing) {
+                const { x, y } = getCanvasCoordinates(event);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+        }
+
+        // Funksioni për të ndaluar vizatimin (i njëjtë si më parë)
+        function stopDrawing() {
+            isDrawing = false;
+            captureSignature(); // Kap firmën kur përdoruesi mbaron shenjimin
+        }
+
+        // Event listeners për miun (i njëjtë si më parë)
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseleave', stopDrawing);
+
+        // Event listeners për ekranin e prekshëm (telefon) (i njëjtë si më parë)
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+
+      document.getElementById('evidencaForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    // Kontrollo firmën
+    const firma = document.getElementById('firma').value;
+    if (!firma) {
+        alert('Ju lutem, vendosni firmën tuaj!');
+        return;
+    }
+
+    // Mbledh të dhënat nga tabela
+    const nxenesitMbetes = [];
+    const rows = document.querySelectorAll('#mbetesTable tbody tr');
+    rows.forEach(row => {
+        const emri = 
+row.querySelector('input[name="emriNxenes[]"]').value;
+        const lenda = row.querySelector('input[name="lendetMbetese[]"]').value;
+        if (emri && lenda) {
+            nxenesitMbetes.push(`${emri}: ${lenda}`);
+        }
+    });
+
+    // Krijo strukturën e të dhënave për Coda
+    const teDhenat = {
+        rows: [{
+            cells: [
+                { column: "Emri i Mësuesit", value: document.getElementById('emri').value },
+                { column: "Mbiemri i Mësuesit", value: document.getElementById('mbiemri').value },
+                { column: "Klasa", value: document.getElementById('klasa').value },
+                { column: "Nxënës në Fillim - Gjithsej", value: parseInt(document.getElementById('gjithsejFillim').value) },
+                { column: "Nxënës në Fillim - Vajza", value: parseInt(document.getElementById('vajzaFillim').value) },
+                { column: "Nxënës në Fund - Gjithsej", value: parseInt(document.getElementById('gjithsejFund').value) },
+                { column: "Nxënës në Fund - Vajza", value: parseInt(document.getElementById('vajzaFund').value) },
+                { column: "Nxënës Mbetës - Gjithsej", value: parseInt(document.getElementById('gjithsejMbetes').value) },
+                { column: "Nxënës Mbetës - Vajza", value: parseInt(document.getElementById('vajzaMbetes').value) },
+                { column: "Mungesa - Gjithsej", value: parseInt(document.getElementById('gjithsejMungesa').value) },
+                { column: "Mungesa - Pa Arsye", value: parseInt(document.getElementById('paArsyeMungesa').value) },
+                { column: "Nxënës Mbetës dhe Lëndët", value: nxenesitMbetes.join('\n') },
+                { column: "Firma", value: firma }
+            ]
+        }]
+    };
+
+    try {
+        const response = await fetch('https://coda.io/apis/v1/docs/DJONJb548H/tables/grid-8gdabNEB08/rows', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer b935802a-f8e5-4172-a38f-4314d5d38a92',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(teDhenat)
+        });
+
+        const result = await response.json();
+        
+        if (response.ok && result.addedRowIds && result.addedRowIds.length > 0) {
+            alert('Të dhënat u dërguan me sukses!');
+            document.getElementById('evidencaForm').reset(); // Opsionale: reset formën
+	    window.location.href = 'dalja.html';
+        } else {
+            throw new Error(result.message || 'Gabim gjatë dërgimit të të dhënave');
+        }
+    } catch (error) {
+        console.error('Gabim:', error);
+        alert(`Gabim gjatë dërgimit: ${error.message}`);
+    }
+});
+
+
+    </script>
+
+</body>
+</html>
